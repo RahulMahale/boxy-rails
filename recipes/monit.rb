@@ -24,6 +24,7 @@ end
 
 node['rails-stack']['monit']['raw_configs'].each do |service_name, raw_config|
   next if service_name.match(/example/).size > 0
+
   monit_action = (!raw_config or raw_config.empty?) ? :disable : :enable
   monitrc service_name do
     action monit_action
