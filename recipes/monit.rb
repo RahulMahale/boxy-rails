@@ -12,6 +12,8 @@ if node['platform_family'] == 'rhel'
 end
 
 node['rails-stack']['monitor_services'].each do |service_name, enabled|
+  next if service_name.match(/example/).size > 0
+
   monit_action = (enabled.nil? || enabled) ? :enable : :delete
   monitrc service_name do
     action monit_action
@@ -21,6 +23,7 @@ node['rails-stack']['monitor_services'].each do |service_name, enabled|
 end
 
 node['rails-stack']['monit']['raw_configs'].each do |service_name, raw_config|
+  next if service_name.match(/example/).size > 0
   monit_action = (!raw_config or raw_config.empty?) ? :disable : :enable
   monitrc service_name do
     action monit_action

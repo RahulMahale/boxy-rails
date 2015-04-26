@@ -1,4 +1,5 @@
 node['rails-stack'][:applications].each_with_index do |application, i|
+  next if application['name'] == 'example'
 
   app_path     = "#{node['rails-stack']['apps_path']}/#{application['name']}/current"
   shared_path  = "#{node['rails-stack']['apps_path']}/#{application['name']}/shared"

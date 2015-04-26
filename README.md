@@ -1,45 +1,18 @@
 rails-stack Cookbook
 ====================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
+Setup rails-stack and monit recipies
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+See metadata
 
-e.g.
-#### packages
-- `toaster` - rails-stack needs toaster to brown your bagel.
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
-
-e.g.
-#### rails-stack::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['rails-stack']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+See attributes
 
 Usage
 -----
-#### rails-stack::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
 Just include `rails-stack` in your node's `run_list`:
 
 ```json
