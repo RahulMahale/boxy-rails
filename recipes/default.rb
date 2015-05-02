@@ -2,9 +2,7 @@
 include_recipe 'rails-stack::user'
 include_recipe 'rails-stack::sudoers'
 include_recipe 'rails-stack::lib_directory'
-
 include_recipe 'rails-stack::packages'
-
 include_recipe 'rails-stack::ruby'
 
 # Postfix - local smtp server

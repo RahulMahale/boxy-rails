@@ -3,12 +3,11 @@ default['rails-stack']['apps_path']        = "#{node['rails-stack']['data_path']
 default['rails-stack']['deployer']         = 'deployer'
 default['rails-stack']['applications']     = Array.new
 default['rails-stack']['packages']         = Array.new
-default['rails-stack']['packages']         = Array.new
 default['rails-stack']['monitor_services'] = {nginx: true, memcached: true, postgresql: true, drives_space: true}
 default['rails-stack']['monit']['drives'] = { rootfs: { path: '/', space_limit: '80%' } }
 default['rails-stack']['monit']['raw_configs'] = { }
 
-default[:ruby][:version] = '2.1.1'
+default[:ruby][:version] = '2.2.2'
 
 default[:rbenv][:install_prefix] = node['rails-stack']['data_path']
 default[:rbenv][:root_path]      = "#{node[:rbenv][:install_prefix]}/rbenv"
@@ -43,7 +42,8 @@ default['nodejs']['install_method'] = 'package'
 
 # Memcached values
 default['memcached']['listen'] = 'localhost'
-# WARNING: This value is not from the origianl memchached value and required to for monit config only
+
+# WARNING: This value is not from the origianl memchached value and required for monit config only
 case node['platform_family']
 when 'rhel', 'fedora', 'centos'
   default['memcached']['pid'] = '/var/run/memcached/memcached.pid'
