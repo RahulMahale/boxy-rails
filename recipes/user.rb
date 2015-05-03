@@ -1,4 +1,4 @@
-deployer = node['rails-stack']['deployer']
+deployer = node['boxy-rails']['deployer']
 
 group deployer
 
@@ -25,7 +25,7 @@ end
 
 Chef::Log.info("I am a message from the #{recipe_name} recipe in the #{cookbook_name} cookbook.")
 
-key = node['rails-stack']['authorized_keys']
+key = node['boxy-rails']['authorized_keys']
 authorized_keys_file = "/home/#{deployer}/.ssh/authorized_keys"
 
 if !key.empty?

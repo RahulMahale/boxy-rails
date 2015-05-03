@@ -1,3 +1,3 @@
 #include_recipe 'delayed_job'
-dj_monit_config node['rails-stack'][:applications]
+dj_monit_config node['boxy-rails'][:applications]
 

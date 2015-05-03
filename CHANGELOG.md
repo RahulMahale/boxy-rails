@@ -1,4 +1,4 @@
-rails-stack CHANGELOG
+boxy-rails CHANGELOG
 =====================
 
 0.1.9
@@ -12,4 +12,4 @@ rails-stack CHANGELOG
 
 0.1.0
 -----
-- miry - Initial release of rails-stack
+- miry - Initial release of boxy-rails

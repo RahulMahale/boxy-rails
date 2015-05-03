@@ -4,11 +4,11 @@ include_recipe 'rbenv::ruby_build'
 include_recipe 'rbenv::rbenv_vars'
 
 # Create tmp directories
-directory "#{node['rails-stack']['data_path']}/tmp" do
+directory "#{node['boxy-rails']['data_path']}/tmp" do
   recursive true
   mode '0777'
 end
-ENV['TMPDIR'] = "#{node['rails-stack']['data_path']}/tmp"
+ENV['TMPDIR'] = "#{node['boxy-rails']['data_path']}/tmp"
 rbenv_ruby node[:ruby][:version]
 
 directory "#{node[:rbenv][:root_path]}/versions" do
@@ -25,4 +25,4 @@ rbenv_gem 'bundler' do
   ruby_version node[:ruby][:version]
 end
 
-include_recipe 'rails-stack::rbenv_wrapper'
+include_recipe 'boxy-rails::rbenv_wrapper'

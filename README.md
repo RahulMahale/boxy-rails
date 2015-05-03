@@ -1,6 +1,6 @@
-rails-stack Cookbook
+boxy-rails Cookbook
 ====================
-Setup rails-stack and monit recipies
+Setup boxy-rails and monit recipies
 
 Requirements
 ------------
@@ -13,13 +13,13 @@ See attributes
 
 Usage
 -----
-Just include `rails-stack` in your node's `run_list`:
+Just include `boxy-rails` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[rails-stack]"
+    "recipe[boxy-rails]"
   ]
 }
 ```

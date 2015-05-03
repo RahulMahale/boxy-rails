@@ -1,21 +1,21 @@
-default['rails-stack']['data_path']        = '/data'
-default['rails-stack']['apps_path']        = "#{node['rails-stack']['data_path']}/apps"
-default['rails-stack']['deployer']         = 'deployer'
-default['rails-stack']['applications']     = Array.new
-default['rails-stack']['packages']         = Array.new
-default['rails-stack']['monitor_services'] = {nginx: true, memcached: true, postgresql: true, drives_space: true}
-default['rails-stack']['monit']['drives'] = { rootfs: { path: '/', space_limit: '80%' } }
-default['rails-stack']['monit']['raw_configs'] = { }
+default['boxy-rails']['data_path']        = '/data'
+default['boxy-rails']['apps_path']        = "#{node['boxy-rails']['data_path']}/apps"
+default['boxy-rails']['deployer']         = 'deployer'
+default['boxy-rails']['applications']     = Array.new
+default['boxy-rails']['packages']         = Array.new
+default['boxy-rails']['monitor_services'] = {nginx: true, memcached: true, postgresql: true, drives_space: true}
+default['boxy-rails']['monit']['drives'] = { rootfs: { path: '/', space_limit: '80%' } }
+default['boxy-rails']['monit']['raw_configs'] = { }
 
 default[:ruby][:version] = '2.2.2'
 
-default[:rbenv][:install_prefix] = node['rails-stack']['data_path']
+default[:rbenv][:install_prefix] = node['boxy-rails']['data_path']
 default[:rbenv][:root_path]      = "#{node[:rbenv][:install_prefix]}/rbenv"
-default[:rbenv][:user]           = node['rails-stack']['deployer']
-default[:rbenv][:group]          = node['rails-stack']['deployer']
-default[:rbenv][:user_home]      = "/home/#{node['rails-stack']['deployer']}"
+default[:rbenv][:user]           = node['boxy-rails']['deployer']
+default[:rbenv][:group]          = node['boxy-rails']['deployer']
+default[:rbenv][:user_home]      = "/home/#{node['boxy-rails']['deployer']}"
 
-default['rails-stack'][:pg_distinct_clients] = false
+default['boxy-rails'][:pg_distinct_clients] = false
 
 # Postgresql values
 default['postgresql']['version'] = '9.3'
@@ -27,9 +27,9 @@ default['postgresql']['config']['ssl'] = false
 #default['postgresql']['enable_pgdg_apt'] = true
 
 default['postgresql']['pg_hba'] = [
-  { type: 'local', db: 'all', user: node['rails-stack']['deployer'], addr: nil,            method: 'peer'},
-  { type: 'host',  db: 'all', user: node['rails-stack']['deployer'], addr: '127.0.0.1/32', method: 'trust'},
-  { type: 'host',  db: 'all', user: node['rails-stack']['deployer'], addr: '::1/128',      method: 'trust'},
+  { type: 'local', db: 'all', user: node['boxy-rails']['deployer'], addr: nil,            method: 'peer'},
+  { type: 'host',  db: 'all', user: node['boxy-rails']['deployer'], addr: '127.0.0.1/32', method: 'trust'},
+  { type: 'host',  db: 'all', user: node['boxy-rails']['deployer'], addr: '::1/128',      method: 'trust'},
   { type: 'host',  db: 'all', user: 'all', addr: '127.0.0.1/32', method: 'md5'},
   { type: 'host',  db: 'all', user: 'all', addr: '::1/128', method: 'md5'}
 ]

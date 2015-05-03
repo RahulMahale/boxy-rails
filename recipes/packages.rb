@@ -22,7 +22,7 @@ general_packages.each do |pack|
   end
 end
 
-node['rails-stack']['packages'].each do |pack|
+node['boxy-rails']['packages'].each do |pack|
   package pack do
     action :install
   end
@@ -38,4 +38,4 @@ include_recipe 'imagemagick::devel'
 include_recipe 'logrotate::default'
 
 # Monit
-include_recipe 'rails-stack::monit'
+include_recipe 'boxy-rails::monit'

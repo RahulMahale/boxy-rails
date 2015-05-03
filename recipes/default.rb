@@ -1,9 +1,9 @@
 # User deployer
-include_recipe 'rails-stack::user'
-include_recipe 'rails-stack::sudoers'
-include_recipe 'rails-stack::lib_directory'
-include_recipe 'rails-stack::packages'
-include_recipe 'rails-stack::ruby'
+include_recipe 'boxy-rails::user'
+include_recipe 'boxy-rails::sudoers'
+include_recipe 'boxy-rails::lib_directory'
+include_recipe 'boxy-rails::packages'
+include_recipe 'boxy-rails::ruby'
 
 # Postfix - local smtp server
 include_recipe 'postfix'
@@ -12,7 +12,7 @@ include_recipe 'postfix'
 include_recipe 'memcached'
 
 # Postgresql
-include_recipe 'rails-stack::pgdg'
+include_recipe 'boxy-rails::pgdg'
 
 # Rails applications
-include_recipe 'rails-stack::applications'
+include_recipe 'boxy-rails::applications'
