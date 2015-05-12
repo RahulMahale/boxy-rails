@@ -6,6 +6,8 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.10'
 
 depends          'rbenv'
+depends          'apt'
+depends          'datadog'
 depends          'nginx'
 depends          'postgresql'
 depends          'delayed_job'
