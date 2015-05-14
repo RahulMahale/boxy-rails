@@ -3,8 +3,12 @@
 case node['platform_family']
 when "debian"
   default['boxy-rails']['secret'] = "/home/ubuntu/chef-solo/data_bag_key"
+  default['deploy_app']['deploy_user'] = "ubuntu"
+  default['deploy_app']['deploy_user_home'] = "/home/ubuntu"
 when "rhel"
-  default['boxy-rails']['secret'] = "/home/root/chef-solo/data_bag_key"
+  default['boxy-rails']['secret'] = "/root/chef-solo/data_bag_key"
+  default['deploy_app']['deploy_user'] = "root"
+  default['deploy_app']['deploy_user_home'] = "/root"
 end
 
 
