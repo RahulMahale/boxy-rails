@@ -1,6 +1,16 @@
 # secret to read encrypted data_bags needs to transfered to VM while bootstrapping
 # Update the secret_file path as per your bootstrap process
-default['boxy-rails']['secret'] = "/home/ubuntu/chef-solo/data_bag_key"
+case node['platform_family']
+when "debian"
+  default['boxy-rails']['secret_key_path'] = "/home/ubuntu/chef-solo/data_bag_key"
+  default['deploy_app']['deploy_user'] = "ubuntu"
+  default['deploy_app']['deploy_user_home'] = "/home/ubuntu"
+when "rhel"
+  default['boxy-rails']['secret_key_path'] = "/root/chef-solo/data_bag_key"
+  default['deploy_app']['deploy_user'] = "root"
+  default['deploy_app']['deploy_user_home'] = "/root"
+end
+
 
 default['boxy-rails']['data_path']        = '/data'
 default['boxy-rails']['apps_path']        = "#{node['boxy-rails']['data_path']}/apps"
