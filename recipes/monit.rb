@@ -1,3 +1,7 @@
+# Cookbook Name:: boxy-rails
+# Recipe:: monit
+
+include_recipe 'postfix'
 include_recipe 'monit'
 
 if node['platform_family'] == 'rhel'
@@ -12,7 +16,6 @@ if node['platform_family'] == 'rhel'
 end
 
 node['boxy-rails']['monitor_services'].each do |service_name, enabled|
-  next if service_name.match(/example/) == nil
 
   monit_action = (enabled.nil? || enabled) ? :enable : :delete
   monitrc service_name do
@@ -33,3 +36,4 @@ node['boxy-rails']['monit']['raw_configs'].each do |service_name, raw_config|
     variables config_source: raw_config
   end
 end
+
