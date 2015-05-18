@@ -1,7 +1,7 @@
 # Cookbook Name:: boxy-rails
 # Recipe:: deploy_app
 
-secret = Chef::EncryptedDataBagItem.load_secret("#{node['boxy-rails']['secret']}")
+secret = Chef::EncryptedDataBagItem.load_secret("#{node['boxy-rails']['secret_key_path']}")
 creds = Chef::EncryptedDataBagItem.load("keys", "deploy", secret)
 
 deploy_key = "#{creds['deploy_key']}"
