@@ -16,6 +16,7 @@ if node['platform_family'] == 'rhel'
 end
 
 node['boxy-rails']['monitor_services'].each do |service_name, enabled|
+  next if service_name.match(/example/)  == nil
 
   monit_action = (enabled.nil? || enabled) ? :enable : :delete
   monitrc service_name do
