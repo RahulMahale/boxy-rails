@@ -1,6 +1,8 @@
 # Cookbook Name:: boxy-rails
 # Recipe:: monit
 
+node.default['monit']['username'] = "monit"
+node.default['monit']['password'] = "passwd1234"
 include_recipe 'postfix'
 include_recipe 'monit'
 
