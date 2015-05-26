@@ -19,6 +19,7 @@ default['boxy-rails']['applications']     = Array.new
 default['boxy-rails']['packages']         = Array.new
 default['monit']['username'] = "monit"
 default['monit']['password'] = "OYdBsmI3Zz5E7j1p2blg"
+default['monit']['address'] = node['hostname']
 default["monit"]["poll_start_delay"] = 60
 default['boxy-rails']['monitor_services'] = {nginx: true, memcached: true, postgresql: true, drives_space: true}
 default['boxy-rails']['monit']['drives'] = { rootfs: { path: '/', space_limit: '80%' } }
