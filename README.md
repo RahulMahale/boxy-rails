@@ -9,7 +9,11 @@ See metadata
 
 Attributes
 ----------
-See attributes
+* ['monit']['username'] - username to access monit dashboard- defaults to 'monit'
+* ['monit']['password'] - password to access monit dashboard- defaults to 'OYdBsmI3Zz5E7j1p2blg', configure as needed
+
+See attributes for detailed attributes
+
 
 Usage
 -----
@@ -24,6 +28,11 @@ Just include `boxy-rails` in your node's `run_list`:
 }
 ```
 
+Dashboard
+---------
+* Default monit Dashboard is configured to run on http://machine_ip:3737 with user- monit and password- OYdBsmI3Zz5E7j1p2blg
+ 
+
 Contributing
 ------------
 
@@ -37,7 +46,4 @@ Contributing
 
 License and Authors
 -------------------
-Authors:
-
-- miry
-- tmwh
+MIT
