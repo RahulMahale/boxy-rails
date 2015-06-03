@@ -1,3 +1,4 @@
+include_recipe 'postgresql::server'
 include_recipe 'postgresql::contrib'
 
 execute 'create deployer user for pg' do
