@@ -2,12 +2,23 @@ upstream <%= @name %>_upstream {
   server unix:<%= @tmp_path %>/sockets/unicorn.sock fail_timeout=0;
 }
 
+<% @custom_upstreams.each do |upstream| %>
+upstream <%= upstream['name'] %> {
+  server <%= upstream['uri'] %>;
+}
+<% end %>
+
 client_body_temp_path  <%= node['boxy-rails']['data_path'] -%>/tmp/nginx/client_temp 1 2;
 proxy_cache_path       <%= node['boxy-rails']['data_path'] -%>/tmp/nginx/cache levels=1:2 keys_zone=cache:30m max_size=1G;
 proxy_temp_path        <%= node['boxy-rails']['data_path'] -%>/tmp/nginx/proxy 1 2;
 
 server {
   listen 80;
+  <% if @ssl %>
+  listen 443 ssl;
+  ssl_certificate /etc/ssl/certs/<%= @domain %>.combined.crt;
+  ssl_certificate_key /etc/ssl/private/<%= @domain %>.key;
+  <% end %>
   server_name <%= @name %>.local;
 
   error_log <%= @log_path %>/nginx-error.log;
@@ -20,9 +31,20 @@ server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header Host $http_host;
     proxy_redirect off;
+    proxy_set_header X-Forwarded-Proto $scheme;
 
     proxy_pass http://<%= @name %>_upstream;
   }
+
+  <% @custom_locations.each do |location| %>
+  location <%= location['uri'] %> {
+    <% location['directives'].each do |key, value| %>
+      <% ([] << value).flatten.each do |value| %>
+    <%= key %> <%= value %>;
+      <% end %>
+    <% end %>
+  }
+  <% end %>
 
   error_page 500 502 503 504 /500.html;
   location = /500.html {
@@ -48,4 +70,3 @@ server {
   <% end %>
 
 }
-
