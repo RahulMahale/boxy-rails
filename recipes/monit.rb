@@ -5,13 +5,15 @@ include_recipe 'postfix'
 include_recipe 'monit'
 
 if node['platform_family'] == 'rhel'
-  template '/etc/monit.conf' do
-    cookbook 'monit'
-    owner 'root'
-    group 'root'
-    mode 0700
-    source 'monitrc.erb'
-    notifies :restart, resources(service: 'monit'), :delayed
+  ['/etc/monit.conf', '/etc/monitrc'].each do |t|
+    template t do
+      cookbook 'monit'
+      owner 'root'
+      group 'root'
+      mode 0700
+      source 'monitrc.erb'
+      notifies :restart, resources(service: 'monit'), :delayed
+    end
   end
 end
 
@@ -37,4 +39,3 @@ node['boxy-rails']['monit']['raw_configs'].each do |service_name, raw_config|
     variables config_source: raw_config
   end
 end
-
