@@ -11,10 +11,16 @@ general_packages = case node['platform_family']
                        not_if 'grep "openssl-devel-1.0.0-27.el6_4.2" /etc/yum/pluginconf.d/versionlock.list'
                      end
 
-                     %w(git readline readline-devel zlib-devel gcc curl-devel httpd-devel apr-devel apr-util-devel sqlite-devel libxml2-devel libxslt-devel libffi-devel)
+                     %w(git readline readline-devel zlib-devel gcc curl-devel httpd-devel apr-devel apr-util-devel sqlite-devel libxml2-devel libxslt-devel libffi-devel yum-utils)
                    else
                      raise node['platform_family']
                    end
+
+if platform_family?('rhel')
+  execute 'yum-config-manager --enable *server-optional* && yum makecache all' do
+    only_if 'yum repolist disabled | grep -q server-optional'
+  end
+end
 
 general_packages.each do |pack|
   package pack do
