@@ -1,3 +1,4 @@
+include_recipe 'boxy-rails::selinux_permissive'
 # User deployer
 include_recipe 'boxy-rails::user'
 include_recipe 'boxy-rails::sudoers'
