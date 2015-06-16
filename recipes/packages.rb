@@ -16,15 +16,15 @@ general_packages = case node['platform_family']
                      raise node['platform_family']
                    end
 
-if platform_family?('rhel')
-  execute 'yum-config-manager --enable *server-optional* && yum makecache all' do
-    only_if 'yum repolist disabled | grep -q server-optional'
-  end
-end
-
 general_packages.each do |pack|
   package pack do
     action :install
+  end
+end
+
+if platform_family?('rhel')
+  execute 'yum-config-manager --enable *server-optional* && yum makecache all' do
+    only_if 'yum repolist disabled | grep -q server-optional'
   end
 end
 
