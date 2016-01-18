@@ -44,6 +44,7 @@ Contributing
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
-License and Authors
--------------------
-MIT
+Brought to you by
+-----------------
+
+[![BigBinary logo](http://bigbinary.com/assets/common/logo.png)](http://BigBinary.com)
