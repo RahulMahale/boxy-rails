@@ -18,7 +18,7 @@ if node['platform_family'] == 'rhel'
 end
 
 node['boxy-rails']['monitor_services'].each do |service_name, enabled|
-  next if service_name.match(/example/)  == nil
+  next unless service_name.match(/example/)  == nil
 
   monit_action = (enabled.nil? || enabled) ? :enable : :delete
   monitrc service_name do
@@ -29,7 +29,7 @@ node['boxy-rails']['monitor_services'].each do |service_name, enabled|
 end
 
 node['boxy-rails']['monit']['raw_configs'].each do |service_name, raw_config|
-  next if service_name.match(/example/)  == nil
+  next unless service_name.match(/example/)  == nil
 
   monit_action = (!raw_config or raw_config.empty?) ? :disable : :enable
   monitrc service_name do
