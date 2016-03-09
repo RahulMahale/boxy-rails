@@ -4,7 +4,9 @@ include_recipe 'boxy-rails::user'
 include_recipe 'boxy-rails::sudoers'
 include_recipe 'boxy-rails::lib_directory'
 include_recipe 'boxy-rails::packages'
-include_recipe 'boxy-rails::ruby'
+include_recipe 'boxy-rails::wkhtml'
+
+nclude_recipe 'boxy-rails::ruby'
 
 # Postfix - local smtp server
 include_recipe 'postfix'
