@@ -10,6 +10,7 @@ include_recipe 'boxy-rails::ruby'
 include_recipe 'postfix'
 
 # Memcached service
+include_recipe 'redis'
 include_recipe 'memcached'
 
 # Postgresql
