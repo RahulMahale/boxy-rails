@@ -13,6 +13,7 @@ end
 end 
     
 bash 'Installing Wkhtmltopdf' do
+  not_if { ::File.exists?("/opt/wkhtmltopdf") }
   user 'root'
   cwd '/tmp'
   code <<-EOH
