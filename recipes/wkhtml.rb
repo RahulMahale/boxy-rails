@@ -2,9 +2,15 @@
 package 'wget' do
   action :install
 end
-package 'xz' do
-  action :install
+
+package 'installing xz' do
+case node[:platform]	
+  when 'redhat', 'centos'
+    package_name 'xz'
+  when 'ubuntu', 'debian'
+    package_name 'xz-utils'
 end
+end 
     
 bash 'Installing Wkhtmltopdf' do
   user 'root'
